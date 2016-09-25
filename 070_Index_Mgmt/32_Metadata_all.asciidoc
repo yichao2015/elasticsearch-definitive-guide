@@ -1,10 +1,9 @@
 [[all-field]]
 ==== 元数据: _all 字段
 
-在 <<search-lite>> 中，我们介绍了 `_all` 字段：一个索引所有字段((("metadata, document", "_all field")))((("_all field", sortas="all field")))作为一个大字段的特殊字段。 `query_string`
-查询子句 (搜索 `?q=john`) 在没有指定字段时默认使用 `_all` 字段。
+在 <<search-lite>> 中，我们介绍了 `_all` 字段：一个把其它字段值((("metadata, document", "_all field")))((("_all field", sortas="all field")))当作一个大字符串来索引的特殊字段。 `query_string` 查询子句(搜索 `?q=john` )在没有指定字段时默认使用 `_all` 字段。
 
- `_all` 字段在新应用的探索阶段，当你还不清楚文档的最终结构时是比较有用的。你可以使用这个字段来做任何查询，并且有很大可能找到需要的文档：
+`_all` 字段在新应用的探索阶段，当你还不清楚文档的最终结构时是比较有用的。你可以使用这个字段来做任何查询，并且有很大可能找到需要的文档：
 
 [source,js]
 --------------------------------------------------
@@ -38,7 +37,7 @@ PUT /my_index/_mapping/my_type
 
 通过 `include_in_all` 设置来逐个控制字段是否要包含在 `_all` 字段中，((("include_in_all setting")))默认值是 `true`。在一个对象(或根对象)上设置 `include_in_all` 可以修改这个对象中的所有字段的默认行为。
 
-你可能想要保留 `_all` 字段作为一个全文字段，例如 `title`，`overview`，`summary` 和 `tags`。 相对于完成禁用 `_all` 字段，你可以为所有字段默认禁用 `include_in_all` 选项，仅在你选择的字段上启用：
+你可能想要保留 `_all` 字段作为一个全文字段，例如 `title`，`overview`，`summary` 和 `tags`。 相对于完全禁用 `_all` 字段，你可以为所有字段默认禁用 `include_in_all` 选项，仅在你选择的字段上启用：
 
 [source,js]
 --------------------------------------------------
@@ -58,7 +57,7 @@ PUT /my_index/my_type/_mapping
 --------------------------------------------------
 
 
-记住，`_all` 字段仅仅是一个((("analyzers", "configuring for all field"))) 进过分析的 `string` 字段。它使用默认分词器来分析它的值，不管这个值原本所在字段指定的分词器。就像所有 `string` 字段，你可以配置 `_all` 字段使用的分词器：
+记住，`_all` 字段仅仅是一个((("analyzers", "configuring for all field"))) 进过分词的 `string` 字段。它使用默认分词器来分析它的值，不管这个值原本所在字段指定的分词器。就像所有 `string` 字段，你可以配置 `_all` 字段使用的分词器：
 
 [source,js]
 --------------------------------------------------
