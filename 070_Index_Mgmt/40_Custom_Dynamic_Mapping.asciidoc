@@ -58,7 +58,7 @@ Elasticsearch 判断字符串为日期的规则可以通过 {ref}/dynamic-field-
 模板按照顺序来检测；第一个匹配的模板会被启用。例如，我们给 `string` 类型字段定义两个模板：
 
 * `es` ：以 `_es` 结尾的字段名需要使用 `spanish` 分词器。
-* `en` ：所有字段使用 `english` 分词器。
+* `en` ：所有其他字段使用 `english` 分词器。
 
 我们将 `es` 模板放在第一位，因为它比匹配所有字符串字段的 `en` 模板更特殊：
 
@@ -91,11 +91,11 @@ PUT /my_index
 // SENSE: 070_Index_Mgmt/40_Custom_dynamic_mapping.json
 
 <1> 匹配字段名以 `_es` 结尾的字段。
-<2> 匹配所有字符串类型字段。
+<2> 匹配其他所有字符串类型字段。
 
 `match_mapping_type` 允许((("match_mapping_type setting")))你应用模板到特定类型的字段上，就像有标准动态映射规则检测的一样， (例如 `string` 或 `long`)。
 
-`match` 参数只匹配字段名称， `path_match` 参数((("path_map parameter")))匹配字段在对象上的完整路径，所有 `address.*.name` 将匹配这样的字段：
+`match` 参数只匹配字段名称， `path_match` 参数((("path_map parameter")))匹配字段在对象上的完整路径，所以 `address.*.name` 将匹配这样的字段：
 
 [source,js]
 --------------------------------------------------
@@ -111,4 +111,4 @@ PUT /my_index
 
 `unmatch` 和 `path_unmatch`((("unmatch pattern")))((("path_unmap pattern")))将被用于未被匹配的字段。
 
-更多的配置选项见 {ref}/dynamic-mapping.html[dynamic mapping documentation] 。
+更多的配置选项见 {ref}/dynamic-mapping.html[动态映射文档] 。
