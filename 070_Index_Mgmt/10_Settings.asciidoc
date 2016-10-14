@@ -9,11 +9,11 @@ TIP: Elasticsearch 提供了优化好的默认配置。 除非你理解这些配
 
 `number_of_shards`::
 
-    每个索引都应设置主分片数，默认值是 `5` 。这个配置在索引创建后不能修改。
+    每个索引的主分片数，默认值是 `5` 。这个配置在索引创建后不能修改。
 
 `number_of_replicas`::
 
-    每个主分片都应创建副本数，默认值是 `1` 。对于活动的索引库，这个配置可以随时修改。
+    每个主分片的副本数，默认值是 `1` 。对于活动的索引库，这个配置可以随时修改。
 
 例如，我们可以创建只有((("index settings", "number_of_replicas")))((("replica shards", "number_of_replicas index setting"))) 一个主分片，没有副本的小索引：
 
