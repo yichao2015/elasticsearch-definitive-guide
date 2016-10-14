@@ -22,4 +22,4 @@ PUT /my_index
 // SENSE: 070_Index_Mgmt/45_Default_mapping.json
 
 
-`_default_` 映射也是一个指定索引的好方法 <<dynamic-templates,dynamic templates>>。
+`_default_` 映射也是一个指定索引 <<dynamic-templates,dynamic templates>> 的好方法。
